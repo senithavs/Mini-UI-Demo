@@ -5,14 +5,14 @@ public class BMIappUI {
 
     private final BMICalculator calculator = new BMICalculator();
 
-    private JTextField ageField    = new JTextField();
-    private JTextField weightField = new JTextField();
-    private JTextField heightField = new JTextField();
+    private final JTextField ageField    = new JTextField();
+    private final JTextField weightField = new JTextField();
+    private final JTextField heightField = new JTextField();
 
-    private JLabel bmiValueLabel = new JLabel("-");
-    private JLabel categoryLabel = new JLabel("-");
-    private JLabel bmiRangeLabel = new JLabel("-");
-    private JLabel statusLabel   = new JLabel("-");
+    private final JLabel bmiValueLabel = new JLabel("-");
+    private final JLabel categoryLabel = new JLabel("-");
+    private final JLabel bmiRangeLabel = new JLabel("-");
+    private final JLabel statusLabel   = new JLabel("-");
 
     public void start() {
         JFrame frame = new JFrame("BMI Calculator");
@@ -129,30 +129,30 @@ public class BMIappUI {
     }
 
     private String getRange(String category) {
-        switch (category) {
-            case "Underweight": return "less than 18.5";
-            case "Normal":      return "between 18.5 and 24.9";
-            case "Overweight":  return "between 25 and 29.9";
-            default:            return "30 or greater";
-        }
+        return switch (category) {
+            case "Underweight" -> "less than 18.5";
+            case "Normal" -> "between 18.5 and 24.9";
+            case "Overweight" -> "between 25 and 29.9";
+            default -> "30 or greater";
+        };
     }
 
     private String getStatus(String category) {
-        switch (category) {
-            case "Underweight": return "You are below the healthy range";
-            case "Normal":      return "You are at a healthy weight";
-            case "Overweight":  return "You are slightly above the healthy range";
-            default:            return "You are well above the healthy range";
-        }
+        return switch (category) {
+            case "Underweight" -> "You are below the healthy range";
+            case "Normal" -> "You are at a healthy weight";
+            case "Overweight" -> "You are slightly above the healthy range";
+            default -> "You are well above the healthy range";
+        };
     }
 
     private Color getCategoryColor(String category) {
-        switch (category) {
-            case "Normal":     return new Color(0, 153, 0);
-            case "Overweight": return new Color(204, 102, 0);
-            case "Obese":      return Color.RED;
-            default:           return Color.BLUE;
-        }
+        return switch (category) {
+            case "Normal" -> new Color(0, 153, 0);
+            case "Overweight" -> new Color(204, 102, 0);
+            case "Obese" -> Color.RED;
+            default -> Color.BLUE;
+        };
     }
 
     private void showError(String message) {
